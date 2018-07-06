@@ -1,5 +1,4 @@
 package com.chen.rocketmq_chat;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;

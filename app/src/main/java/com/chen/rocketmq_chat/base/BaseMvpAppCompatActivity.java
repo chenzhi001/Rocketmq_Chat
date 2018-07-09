@@ -42,13 +42,12 @@ public abstract class BaseMvpAppCompatActivity<P extends MvpBasePresenter, V ext
         init();
     }
 
+    protected abstract void init();
+
     protected abstract P createPresenter();
 
-    public abstract int getLayoutId();
+    protected abstract int getLayoutId();
 
-    private void init() {
-
-    }
 
     @Override
     public void showToast(String msg) {

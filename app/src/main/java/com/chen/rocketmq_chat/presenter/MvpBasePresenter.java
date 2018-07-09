@@ -14,11 +14,11 @@ import java.lang.reflect.Proxy;
  */
 public class MvpBasePresenter<V extends MvpView> implements MvpPresenter<V> {
     private WeakReference<V> mWeakView;
-    private Context mWeakeContext;
+    private WeakReference<Context> mWeakeContext;
     protected V View;
 
     public MvpBasePresenter(Context weakeContext) {
-        this.mWeakeContext = new WeakReference<>(weakeContext).get();
+        this.mWeakeContext = new WeakReference<>(weakeContext);
     }
 
     @Override
@@ -41,6 +41,13 @@ public class MvpBasePresenter<V extends MvpView> implements MvpPresenter<V> {
             return true;
         }
         return false;
+    }
+
+    public Context getContext() {
+        if (mWeakeContext != null) {
+            return mWeakeContext.get();
+        }
+        return null;
     }
 
     public V getView() {

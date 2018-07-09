@@ -1,5 +1,4 @@
 package com.chen.rocketmq_chat.base;
-
 import com.trello.rxlifecycle2.LifecycleTransformer;
 
 /**
@@ -16,7 +15,7 @@ public interface MvpView {
     void showLoading();
 
     /**
-     * 隐藏加载
+     * 隐藏加载c
      */
     void dismissLoading();
 

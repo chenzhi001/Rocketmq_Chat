@@ -21,10 +21,8 @@ import java.util.Map;
 public class AppManager {
 
     private static Application sContext;
-
     private static final int STATUS_FORCE_KILLED = -1;
     private static final int STATUS_NORMAL = 0;
-
     /**
      * 当前应用的状态，默认为被回收状态；
      * ps：当最小化应用后，如果被强杀或者回收了，此值会重置为默认；

@@ -1,8 +1,9 @@
 package com.chen.rocketmq_chat.mq;
 
-import org.apache.rocketmq.client.producer.LocalTransactionExecuter;
-import org.apache.rocketmq.client.producer.LocalTransactionState;
-import org.apache.rocketmq.common.message.Message;
+
+import com.alibaba.rocketmq.client.producer.LocalTransactionExecuter;
+import com.alibaba.rocketmq.client.producer.LocalTransactionState;
+import com.alibaba.rocketmq.common.message.Message;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

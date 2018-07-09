@@ -1,17 +1,13 @@
 package com.chen.rocketmq_chat.ui;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
+import com.alibaba.rocketmq.client.producer.SendResult;
 import com.chen.rocketmq_chat.R;
 import com.chen.rocketmq_chat.mq.Productor;
-
-import org.apache.rocketmq.client.exception.MQClientException;
-import org.apache.rocketmq.client.producer.SendResult;
 
 /**
  * Created by ${BaLe} on 2018/7/6.
@@ -38,14 +34,10 @@ public class HomeActivity extends Activity implements Productor.onSenResoultlist
             public void onClick(View v) {
                 String msg = editText.getText().toString().trim();
                 String ip = ipet.getText().toString().trim();
-                try {
-                    if (productor == null) {
-                        productor = new Productor(ip,HomeActivity.this);
-                    }
-                    productor.sendMesage(msg, TOPIC, key, TAG);
-                } catch (MQClientException e) {
-                    e.printStackTrace();
+                if (productor == null) {
+                    productor = new Productor(ip, HomeActivity.this);
                 }
+                productor.sendMesage(msg, TOPIC, key, TAG);
             }
         });
     }
@@ -64,4 +56,5 @@ public class HomeActivity extends Activity implements Productor.onSenResoultlist
     public void onSenResult(SendResult sendResult) {
 
     }
+
 }

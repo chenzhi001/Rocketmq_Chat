@@ -1,6 +1,5 @@
 package com.chen.rocketmq_chat.base;
 import com.trello.rxlifecycle2.LifecycleTransformer;
-
 /**
  * @author:Orange Created by 2018/7/6.
  */

@@ -8,6 +8,7 @@ import android.view.inputmethod.InputMethodManager;
 
 import com.chen.rocketmq_chat.R;
 import com.chen.rocketmq_chat.presenter.MvpBasePresenter;
+import com.chen.rocketmq_chat.ui.widget.CenterToast;
 import com.chen.rocketmq_chat.ui.widget.DialogLoading;
 import com.chen.rocketmq_chat.utils.StatusBarUtils;
 import com.trello.rxlifecycle2.LifecycleTransformer;
@@ -51,7 +52,7 @@ public abstract class BaseMvpAppCompatActivity<P extends MvpBasePresenter, V ext
 
     @Override
     public void showToast(String msg) {
-
+        CenterToast.show(msg);
     }
 
     @Override

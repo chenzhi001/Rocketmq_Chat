@@ -1,8 +1,6 @@
-package com.chen.rocketmq_chat.presenter;
+package com.chen.rocketmq_chat.base;
 
 import android.content.Context;
-
-import com.chen.rocketmq_chat.base.MvpView;
 
 import java.lang.ref.WeakReference;
 import java.lang.reflect.InvocationHandler;

@@ -6,11 +6,10 @@ import com.chen.rocketmq_chat.base.MvpView;
  * @author:Orange Created by 2018/7/9.
  */
 public interface HomeContract {
-    interface HomePresenter {
+    interface IHomePresenter {
 
     }
-
-    interface HomeView extends MvpView {
+    interface IHomeView extends MvpView {
 
     }
 }

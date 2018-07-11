@@ -1,6 +1,5 @@
 package com.chen.rocketmq_chat.base;
 
-import com.chen.rocketmq_chat.presenter.MvpBasePresenter;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.components.RxActivity;
 

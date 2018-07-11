@@ -1,4 +1,4 @@
-package com.chen.rocketmq_chat.mq;
+package com.chen.rocketmq_chat.mq.productor;
 
 import com.alibaba.rocketmq.client.exception.MQClientException;
 import com.alibaba.rocketmq.client.producer.LocalTransactionState;
@@ -7,6 +7,8 @@ import com.alibaba.rocketmq.client.producer.TransactionCheckListener;
 import com.alibaba.rocketmq.client.producer.TransactionMQProducer;
 import com.alibaba.rocketmq.common.message.Message;
 import com.alibaba.rocketmq.common.message.MessageExt;
+import com.chen.rocketmq_chat.mq.TransactionExcuterImpl;
+import com.chen.rocketmq_chat.mq.callback.onSenResoultlistner;
 
 /**
  * Created by ${BaLe} on 2018/7/6.
@@ -14,7 +16,8 @@ import com.alibaba.rocketmq.common.message.MessageExt;
 public class Productor {
     private final TransactionMQProducer mqProducer;
     private onSenResoultlistner resoultlistner;
-    public Productor(String nameser, onSenResoultlistner listner){
+
+    public Productor(String nameser, onSenResoultlistner listner) {
         String group_name = "transation_productor";
         mqProducer = new TransactionMQProducer(group_name);
         mqProducer.setNamesrvAddr(nameser);
@@ -52,20 +55,12 @@ public class Productor {
         Message msg = new Message(topictransaction, tag, message.getBytes());
         try {
             SendResult sendResult = mqProducer.sendMessageInTransaction(msg, transactionExcuter, "tq");
-            resoultlistner.onSendSuccess();
+            resoultlistner.onSendSuccess(sendResult);
         } catch (MQClientException e) {
             e.printStackTrace();
-            resoultlistner.onSendFailed();
+            resoultlistner.onSendFailed(e.getErrorMessage());
         }
-
     }
 
-    public interface onSenResoultlistner {
 
-        void onSendSuccess();
-
-        void onSendFailed();
-
-        void onSenResult(SendResult sendResult);
-    }
 }

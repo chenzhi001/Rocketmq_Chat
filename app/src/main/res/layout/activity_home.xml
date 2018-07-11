@@ -3,38 +3,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
     <android.support.v4.view.ViewPager
         android:id="@+id/vpHome"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
-
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#eeeeee" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="horizontal"
         android:paddingTop="5dp">
-
         <RelativeLayout
+            android:id="@+id/rl_chat"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1">
-
             <ImageView
                 android:id="@+id/ivChat"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
                 android:layout_centerHorizontal="true"
                 android:gravity="center_horizontal"
                 android:src="@drawable/icon_chat"
                 android:text="Chat" />
-
             <TextView
                 android:id="@+id/tv_chat"
                 android:layout_width="wrap_content"
@@ -44,48 +39,45 @@
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:text="Chat"
-                android:textSize="10sp" />
+                android:textSize="11sp" />
         </RelativeLayout>
-
         <RelativeLayout
+            android:id="@+id/rl_contacts"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1">
-
             <ImageView
                 android:id="@+id/ivContact"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
                 android:layout_centerHorizontal="true"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:src="@drawable/icon_contact"
                 android:text="Ship" />
-
             <TextView
-                android:id="@+id/tv_ship"
+                android:id="@+id/tv_contacts"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/ivContact"
                 android:layout_centerHorizontal="true"
                 android:text="Ship"
-                android:textSize="10sp" />
+                android:textSize="11sp" />
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/rl_mine"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1">
-
             <ImageView
                 android:id="@+id/ivMine"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
                 android:layout_centerHorizontal="true"
                 android:layout_weight="1"
                 android:src="@drawable/icon_mine"
                 android:text="Mine" />
-
             <TextView
                 android:id="@+id/tv_mine"
                 android:layout_width="wrap_content"
@@ -94,7 +86,7 @@
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
                 android:text="Mine"
-                android:textSize="10sp" />
+                android:textSize="11sp" />
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

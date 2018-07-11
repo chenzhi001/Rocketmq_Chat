@@ -1,6 +1,4 @@
-package com.chen.rocketmq_chat.presenter;
-
-import com.chen.rocketmq_chat.base.MvpView;
+package com.chen.rocketmq_chat.base;
 
 /**
  * @author:Orange Created by 2018/7/6.

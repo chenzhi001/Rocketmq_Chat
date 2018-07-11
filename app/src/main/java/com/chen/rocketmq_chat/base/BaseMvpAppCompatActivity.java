@@ -7,7 +7,6 @@ import android.support.v4.content.ContextCompat;
 import android.view.inputmethod.InputMethodManager;
 
 import com.chen.rocketmq_chat.R;
-import com.chen.rocketmq_chat.presenter.MvpBasePresenter;
 import com.chen.rocketmq_chat.ui.widget.CenterToast;
 import com.chen.rocketmq_chat.ui.widget.DialogLoading;
 import com.chen.rocketmq_chat.utils.StatusBarUtils;
@@ -23,22 +22,31 @@ import butterknife.Unbinder;
 /**
  * @author:Orange Created by 2018/7/6.
  */
-public abstract class BaseMvpAppCompatActivity<P extends MvpBasePresenter, V extends MvpView> extends RxAppCompatActivity implements MvpView {
+public abstract class BaseMvpAppCompatActivity<P extends MvpBasePresenter, V extends MvpView> extends RxAppCompatActivity {
 
     protected P mPresenter;
     private Unbinder unbinder;
     protected Context mContext;
     protected DialogLoading mDialogLoading;
+    protected V mView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
-        setStatusBarColor();
-        mPresenter = createPresenter();
-        unbinder = ButterKnife.bind(this);
         mContext = getApplicationContext();
         mDialogLoading = new DialogLoading(this);
+        unbinder = ButterKnife.bind(this);
+        setStatusBarColor();
+        if (mPresenter == null) {
+            mPresenter = createPresenter();
+        }
+        if (mView == null) {
+            mView = createView();
+        }
+        if (mPresenter != null && mView != null) {
+            mPresenter.attachView(mView);
+        }
         init();
     }
 
@@ -48,27 +56,25 @@ public abstract class BaseMvpAppCompatActivity<P extends MvpBasePresenter, V ext
 
     protected abstract int getLayoutId();
 
+    protected abstract V createView();
 
-    @Override
+
     public void showToast(String msg) {
         CenterToast.show(msg);
     }
 
-    @Override
     public void showLoading() {
         if (!mDialogLoading.isShowing()) {
             mDialogLoading.show();
         }
     }
 
-    @Override
     public void dismissLoading() {
         if (mDialogLoading.isShowing()) {
             mDialogLoading.dismiss();
         }
     }
 
-    @Override
     public void showLodingText(String text) {
         if (mDialogLoading.isShowing()) {
             mDialogLoading.dismiss();
@@ -77,7 +83,6 @@ public abstract class BaseMvpAppCompatActivity<P extends MvpBasePresenter, V ext
         mDialogLoading.show();
     }
 
-    @Override
     public <T> LifecycleTransformer<T> bindToLife() {
         return bindUntilEvent(ActivityEvent.DESTROY);
     }
@@ -108,6 +113,7 @@ public abstract class BaseMvpAppCompatActivity<P extends MvpBasePresenter, V ext
         // 解绑view
         if (mPresenter != null) {
             mPresenter.dettachView();
+            this.mPresenter = null;
         }
         if (EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().unregister(this);

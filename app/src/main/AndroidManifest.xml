@@ -3,6 +3,7 @@
     package="com.chen.rocketmq_chat">
 
     <application
+        android:name=".base.MqApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="MQChat"

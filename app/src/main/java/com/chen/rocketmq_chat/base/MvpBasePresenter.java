@@ -2,6 +2,8 @@ package com.chen.rocketmq_chat.base;
 
 import android.content.Context;
 
+import com.chen.rocketmq_chat.model.BaseModel;
+
 import java.lang.ref.WeakReference;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -10,14 +12,17 @@ import java.lang.reflect.Proxy;
 /**
  * @author:Orange Created by 2018/7/6.
  */
-public class MvpBasePresenter<V extends MvpView> implements MvpPresenter<V> {
+public abstract class MvpBasePresenter<V extends MvpView,M extends BaseModel> implements MvpPresenter<V> {
     private WeakReference<V> mWeakView;
     private WeakReference<Context> mWeakeContext;
     protected V View;
+    protected M mMode;
 
     public MvpBasePresenter(Context weakeContext) {
         this.mWeakeContext = new WeakReference<>(weakeContext);
+        this.mMode=createModel();
     }
+    public abstract M createModel();
 
     @Override
     public void attachView(V view) {

@@ -4,8 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.res.ColorStateList;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.os.Handler;
 import android.support.graphics.drawable.ArgbEvaluator;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -32,7 +30,6 @@ import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
@@ -91,8 +88,6 @@ public class HomeActivity extends BaseMvpAppCompatActivity<HomePresenterImpl, Ho
         initImageViewDrawable();
         mHomePager.setAdapter(new RxFragmentPagerAdpter(getSupportFragmentManager()));
         mHomePager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            private final int DELAY_TIME = 100;
-            private Handler handler = new Handler();
 
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -194,13 +189,6 @@ public class HomeActivity extends BaseMvpAppCompatActivity<HomePresenterImpl, Ho
                 textView.setTextColor(mBottomColorUnSelect);
             }
         }
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
     }
 
     @OnClick({R.id.rl_chat, R.id.rl_contacts, R.id.rl_mine})
